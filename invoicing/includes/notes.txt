@@ -1,0 +1,68 @@
+//POSSIBLE NEEDED FOR ADDITIONS ON EDIT OF INVOICE AND QUOTES - LINE ID / Rid different to original script
+
+    //LINE TOTALS
+    function sumLine(id){
+        //alert(id);
+        var str = id;
+        var Rid = str.charAt(str.length - 1)
+        
+        var value1 = parseFloat(document.getElementById("item_unit_cost" + Rid).value);
+        var value2 = parseFloat(document.getElementById("item_quantity" + Rid).value);
+        var sum1 = value1 * value2;
+        var sum = parseFloat(sum1).toFixed(2);
+        document.getElementById("item_line_total" + Rid).value = sum;
+    // LINE TAXES 
+        if (document.getElementById("item_tax" + Rid).value == "") {
+        var sum = "0";
+        } else {
+        var value3 = parseFloat(document.getElementById("item_tax" + Rid).value);
+        var value4 = parseFloat(document.getElementById("item_line_total" + Rid).value);
+        var sum1 = value3 / "100" * value4;
+        var sum = parseFloat(sum1).toFixed(2);
+        }
+        document.getElementById("line_tax_amt" + Rid).value = sum;
+        ;
+
+
+    // SUB TOTAL CALCULATION
+    var total=0;
+        $(".line_total").each(function(){
+            if(!isNaN(parseFloat($(this).val())))
+            {
+            total+=parseFloat($(this).val());  
+            }
+        });
+        total1 = parseFloat(total).toFixed(2);
+        $(".sub_total").val(total1);  
+
+    // LINE TAX TOTAL CALCULATION
+    var total=0;
+        $(".line_tax_amt").each(function(){
+            if(!isNaN(parseFloat($(this).val())))
+            {
+            total+=parseFloat($(this).val());  
+            }
+        });
+        total1 = parseFloat(total).toFixed(2);
+        $(".total_line_tax").val(total1);    
+
+    // Totals Taxes
+    if (document.getElementById("invoice_tax").value == "") {
+    var sum = "0";
+    } else {
+    var value5 = parseFloat(document.getElementById("invoice_tax").value);
+    var value6 = parseFloat(document.getElementById("total_subtotal").value);
+    var sum1 = value6 / "100" * value5;
+    var sum = sum1.toFixed(2);
+    }
+    document.getElementById("subtotal_tax").value = sum;  
+
+    // TOTAL DUE
+    var value7 = parseFloat(document.getElementById("total_subtotal").value);
+    var value8 = parseFloat(document.getElementById("total_line_tax").value);
+    var value9 = parseFloat(document.getElementById("subtotal_tax").value);
+    var sum1 = value7 + value8 + value9;
+    var sum = sum1.toFixed(2);
+    document.getElementById("total_balance_due").value = sum; 
+
+    }
