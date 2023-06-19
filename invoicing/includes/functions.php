@@ -3466,7 +3466,7 @@ require('../includes/TCPDF/tcpdf.php');
 		header("Location: ../".$page.".php?id=17");
 	}
 	$mysqli->close();
-	exit();
+	exit(); 
 
 	
 /// DARK & LIGHT MODE UPDATE USER PREFERENCE ///

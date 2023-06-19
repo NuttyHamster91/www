@@ -11,7 +11,7 @@ if(isset($_GET['id'])){
         $pVar = "Please Check Your Emails for your Activation Link.";
     } elseif ($pVar =='4'){
         $pVar = "Looks Like Something Went Wrong.";
-    } elseif ($pVar =='5'){
+    } elseif ($pVar =='5'){ 
         $pVar = "Account Activated - You can now login.";
     } elseif ($pVar =='6'){
         $pVar = "The account is already activated or doesn\'t exist!";
